@@ -1,0 +1,19 @@
+{
+       "name": "nft-quadrant-sale",
+       "version": "1.0.0",
+       "dependencies": {
+         "@openzeppelin/contracts": "^4.9.3",
+         "@rmrk-team/evm-contracts": "^0.3.0"
+       },
+       "devDependencies": {
+         "hardhat": "^2.22.2",
+         "@nomicfoundation/hardhat-toolbox": "^6.0.0"
+       },
+       "scripts": {
+         "compile": "hardhat compile",
+         "test": "hardhat test",
+         "deploy:sepolia": "hardhat run scripts/deploy.js --network sepolia",
+         "deploy:mainnet": "hardhat run scripts/deploy.js --network mainnet",
+         "deploy:polygon": "hardhat run scripts/deploy.js --network polygon"
+       }
+     }
