@@ -1,7 +1,39 @@
-require("@nomicfoundation/hardhat-toolbox");
+require("@nomiclabs/hardhat-waffle");
+     require("@nomicfoundation/hardhat-verify");
+     require("dotenv").config();
 
      module.exports = {
-       solidity: "0.8.0",
+       solidity: {
+         compilers: [
+           {
+             version: "0.8.0",
+             settings: {
+               optimizer: {
+                 enabled: true,
+                 runs: 1000
+               }
+             }
+           },
+           {
+             version: "0.8.21",
+             settings: {
+               optimizer: {
+                 enabled: true,
+                 runs: 1000
+               }
+             }
+           },
+           {
+             version: "0.8.28",
+             settings: {
+               optimizer: {
+                 enabled: true,
+                 runs: 1000
+               }
+             }
+           }
+         ]
+       },
        paths: {
          sources: "./contracts",
          artifacts: "./artifacts"
@@ -9,19 +41,19 @@ require("@nomicfoundation/hardhat-toolbox");
        networks: {
          hardhat: {},
          sepolia: {
-           url: "https://sepolia.infura.io/v3/YOUR_INFURA_KEY",
-           accounts: ["0x71E3f9A2e9C3ccE5D9eD42442C02b24f76329b29"]
+           url: `https://eth-sepolia.g.alchemy.com/v2/${process.env.INFURA_API_KEY}`,
+           accounts: [process.env.PRIVATE_KEY]
          },
          mainnet: {
-           url: "https://mainnet.infura.io/v3/YOUR_INFURA_KEY",
-           accounts: ["0x71E3f9A2e9C3ccE5D9eD42442C02b24f76329b29"]
+           url: `https://eth-mainnet.g.alchemy.com/v2/${process.env.INFURA_API_KEY}`,
+           accounts: [process.env.PRIVATE_KEY]
          },
          polygon: {
            url: "https://polygon-rpc.com",
-           accounts: ["YOUR_PRIVATE_KEY"]
+           accounts: [process.env.PRIVATE_KEY]
          }
        },
        etherscan: {
-         apiKey: "0x71E3f9A2e9C3ccE5D9eD42442C02b24f76329b29"
+         apiKey: process.env.ETHERSCAN_API_KEY
        }
      };
